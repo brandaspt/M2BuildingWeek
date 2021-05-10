@@ -1,5 +1,17 @@
 /* Start of login page */
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.page{
+    align-items: center;
+   
+        max-width: 500px;
+        margin: auto;
+    
+}
 
 /* End of login page */
 
