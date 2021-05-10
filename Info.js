@@ -15,5 +15,4 @@
     > Finish one single page before moving to the next one
     > Keep an "always-on but muted" channel so that if you need help, you can just open the mic and speak out loud
     > Commit and merge often, try to work on separate branches.
-
 */
