@@ -22,6 +22,9 @@ a {
   color: gray;
   text-decoration: none;
 }
+nav {
+  height: inherit;
+}
 nav .active {
   color: white;
 }
@@ -37,6 +40,32 @@ li {
 
 aside svg {
   margin-right: 1em;
+}
+aside .btn {
+  margin: 10px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+aside .btn:nth-of-type(2) {
+  border: 2px solid #888988;
+  background-color: #151719;
+  color: #c2c3c3;
+}
+aside nav p {
+  font-size: 12px;
+  color: gray;
+}
+aside nav p:first-of-type {
+  margin-right: 10px;
+}
+aside nav p:nth-of-type(2) {
+  margin-left: 10px;
+}
+aside nav .line-between {
+  border-right: 2px solid gray;
+  height: 15px;
+  width: 2px;
 }
 
 main {
