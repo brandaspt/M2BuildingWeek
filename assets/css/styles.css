@@ -1,35 +1,57 @@
 /* Start of login page */
 
-
 /* End of login page */
 
-
 /* Start of home page */
-body{
-    height: 100vh;
+body {
+  height: 100vh;
 }
-h1{
-    margin-bottom: 1000px;
+h1 {
+  margin-bottom: 1000px;
 }
-aside{
-    background-color:  green;
-    height: 90vh;
-    position: fixed;
-    left: 0;
+aside {
+  background-color: #060c13;
+  height: 90vh;
+  position: fixed;
+  left: 0;
 }
-main{
-    background-color:  purple;
-    min-height: 200vh;
-    margin-left: auto;
-    margin-bottom: 10vh;
-    overflow-y: scroll;
+.nav-logo {
+  padding-top: 15px;
 }
-footer{
-    height: 10vh;
-    width: 100vw;
-    background-color:  brown;
-    position: fixed;
-    bottom: 0;
+a {
+  color: gray;
+  text-decoration: none;
+}
+nav .active {
+  color: white;
+}
+nav ul {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 15px 0;
+}
+
+aside svg {
+  margin-right: 1em;
+}
+
+main {
+  background-color: purple;
+
+  min-height: 200vh;
+  margin-left: auto;
+  margin-bottom: 10vh;
+}
+footer {
+  height: 10vh;
+  width: 100vw;
+  background-color: brown;
+  position: fixed;
+  bottom: 0;
 }
 
 /* End of home page */
