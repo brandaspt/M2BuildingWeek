@@ -38,6 +38,63 @@ a {
   letter-spacing: 1px;
   font-weight: 700;
 }
+
+/* Header */
+header {
+  height: 400px;
+  background-image: url("../assets/artist/images/bonoboHero.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+  mask-image: gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+}
+.hero-content {
+  position: absolute;
+  width: calc(100vw - 250px);
+  top: 140px;
+  left: 0px;
+  letter-spacing: 1px;
+}
+.hero-content .listeners {
+  color: rgb(228, 228, 228);
+}
+.hero-content .artist-name {
+  color: white;
+}
+.hero-content .header-btns > button {
+  width: 140px;
+  letter-spacing: 1px;
+}
+.hero-content .header-btns > button:first-child {
+  background-color: #1cb955;
+  border: 2px solid #1cb955;
+  color: white;
+}
+.hero-content .header-btns > button:nth-of-type(2) {
+  color: white;
+  margin: 0 10px;
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content .header-btns i {
+  color: white;
+  font-size: 1.5em;
+}
+
 /* Side navbar */
 .side-navbar {
   height: inherit;
@@ -97,14 +154,17 @@ aside nav .line-between {
 
 /* Main navbar */
 .main-nav {
-  position: fixed;
+  position: absolute;
   width: calc(100vw - 250px);
-  top: 0;
-  left: 250px;
+  top: 340px;
+  left: 0px;
   z-index: 2;
   transition: background-color 0.7s;
 }
 .main-nav.bg-on {
+  position: fixed;
+  top: 0;
+  left: 250px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 .main-nav .navbar-toggler {
@@ -140,6 +200,30 @@ aside nav .line-between {
     bottom: 0px;
     border: 1px solid rgb(116, 173, 29);
   }
+}
+/* Throwback section */
+section > h2 {
+  color: white;
+  font-weight: 700;
+  margin: 1em 0 0.75em;
+}
+#throwback {
+  margin-top: calc(56px + 32px);
+}
+#throwback .card,
+#shows .card {
+  background-color: rgba(0, 0, 0, 0.123);
+  cursor: pointer;
+  transition: 0.75s;
+}
+#throwback .card:hover,
+#shows .card:hover {
+  transform: scale(1.05);
+}
+#throwback .card-title,
+#shows .card-title {
+  color: white;
+  font-size: 0.9em;
 }
 
 /* Footer */
