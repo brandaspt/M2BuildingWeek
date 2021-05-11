@@ -22,9 +22,9 @@
     />
 
     <!-- Own Css -->
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 
-    <title>Spotify Home</title>
+    <title>Spotify Album Page</title>
   </head>
   <body>
     <div class="d-flex justify-content-start">
@@ -111,85 +111,390 @@
           </div>
         </nav>
       </aside>
+
+      <!-- main starts -->
       <main>
-        <div class="container-fluid">
-          <nav class="main-nav navbar navbar-expand-lg">
-            <div class="container-fluid">
+        <div class="container">
+          <div class="row text-white">
+            <div class="col-12 col-md-4 album-cover">
+              <img
+                src="/assets/album/images/queen.jfif"
+                class="img-fluid w-75"
+                alt=""
+              />
+              <h3 class="mt-2">
+                Queen II (Deluxe Edition <br />
+                2011 Remaster)
+              </h3>
+              <p class="">Queen</p>
               <button
-                class="navbar-toggler"
                 type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+                class="btn rounded-pill my-3 px-5 text-light"
+                id="btn-play"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  fill="currentColor"
-                  class="bi bi-list"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-                  />
-                </svg>
+                PLAY
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul
-                  class="
-                    navbar-nav
-                    mx-auto
-                    mb-2 mb-lg-0
-                    justify-content-lg-center
-                  "
-                >
-                  <li class="nav-item">
-                    <a href="#" class="nav-link active">TRENDING</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#shows">PODCAST</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">MOODS AND GENRES</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">NEW RELEASES</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">DISCOVER</a>
-                  </li>
-                </ul>
+              <p>1974 . 16 SONGS</p>
+              <!-- heart -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-heart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                />
+              </svg>
+              <!-- three points -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="bi bi-three-dots"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                />
+              </svg>
+            </div>
+            <div class="col-12 col-md-8">
+              <div class="row track-lists">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>Procession - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>1:13</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>Father To Son- Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>6:13</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>White Queen (As it Began) - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>6:13</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>Some Day One Day - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>6:13</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>The Loser in The End - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>4:01</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>Ogre Battle - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>4:01</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>The Fairy Feller's Master-Stroke - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>4:01</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>Nevermore - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>4:01</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>The March Of The Black Queen - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>4:01</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>Seven Seas Of Rhye - Remasterd 2011</h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>4:01</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-music-note"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="d-flex flex-column">
+                    <h6>
+                      White Queen (As it Began)-Live At Hammersmith Odeon,
+                      London/ December 1975
+                    </h6>
+                    <p>queen</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-2">
+                  <p>5:32</p>
+                </div>
               </div>
             </div>
-          </nav>
-
-          <section class="container" id="throwback">
-            <h2>#THROWBACKTHURSDAY</h2>
-            <div
-              class="
-                throwback-cards
-                row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6
-                g-4
-              "
-            ></div>
-          </section>
-          <section class="container" id="shows">
-            <h2>Shows to try</h2>
-            <div
-              class="
-                shows-cards
-                row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6
-                g-4
-              "
-            ></div>
-          </section>
+          </div>
         </div>
       </main>
+      <!--   main ends -->
     </div>
+    <!-- footer starts -->
     <div class="container-fluid">
       <footer class="row fixed-bottom">
         
@@ -337,10 +642,11 @@
       </footer>
       
     </div>
+    <!-- footer ends -->
     <!-- audio -->
     <audio
       id="audio-OneRepublic-Run"
-      src="./assets/home/music/[MP3DOWNLOAD.TO] OneRepublic - Run (Official Music Video)-320k.mp3"
+      src="/assets/album/music/[MP3DOWNLOAD.TO] OneRepublic - Run (Official Music Video)-320k.mp3"
     ></audio>
 
     <!-- Optional JavaScript; choose one of the two! -->
