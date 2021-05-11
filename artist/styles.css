@@ -82,17 +82,25 @@ header {
   background-color: #1cb955;
   border: 2px solid #1cb955;
   color: white;
+  backface-visibility: hidden;
+  transition: all 0.5s;
 }
 .hero-content .header-btns > button:nth-of-type(2) {
   color: white;
   margin: 0 10px;
   border: 2px solid white;
   background-color: rgba(0, 0, 0, 0.4);
+  backface-visibility: hidden;
+  transition: all 0.5s;
 }
-
 .hero-content .header-btns i {
   color: white;
   font-size: 1.5em;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+}
+.hero-content .header-btns > *:hover {
+  transform: scale(1.05) translateZ(0);
 }
 
 /* Side navbar */
@@ -201,29 +209,52 @@ aside nav .line-between {
     border: 1px solid rgb(116, 173, 29);
   }
 }
-/* Throwback section */
+/* Albums section */
 section > h2 {
   color: white;
   font-weight: 700;
   margin: 1em 0 0.75em;
 }
-#throwback {
-  margin-top: calc(56px + 32px);
+#albums {
+  padding-top: 20px;
 }
-#throwback .card,
+#albums .card,
 #shows .card {
   background-color: rgba(0, 0, 0, 0.123);
   cursor: pointer;
-  transition: 0.75s;
+  transition: 0.5s;
 }
-#throwback .card:hover,
+#albums .card:hover,
 #shows .card:hover {
-  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.123);
 }
-#throwback .card-title,
+#albums .card-title,
 #shows .card-title {
   color: white;
   font-size: 0.9em;
+}
+#albums .card-text {
+  color: #929292;
+}
+.card-play-btn {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  top: 123px;
+  height: 40px;
+  width: 40px;
+  background-color: #1cb955;
+  color: white;
+  text-align: center;
+  filter: drop-shadow(0 5px 10px black);
+  transform: translateY(100%) scaleY(0);
+  opacity: 0;
+  transition: 0.5s;
+}
+#albums .card:hover .card-play-btn {
+  transform: translateY(0) scaleY(1);
+  opacity: 1;
 }
 
 /* Footer */
@@ -252,7 +283,7 @@ footer #getIcon {
   display: inline;
   margin-left: auto;
   margin-right: auto;
-  width: 40%; 
+  width: 40%;
 }
 /* .center-bar::before{
   content: "0.50";
@@ -260,89 +291,83 @@ footer #getIcon {
 .center-bar::after{
 content: "5.29";
 } */
-.text{
-  color:gray;
- margin-left: 400px ;
- font-size: 10px;
+.text {
+  color: gray;
+  margin-left: 400px;
+  font-size: 10px;
   padding-top: 3px;
 }
-.text2{
-  color:gray;
+.text2 {
+  color: gray;
   margin-left: 268px;
   font-size: 10px;
   padding-top: 3px;
 }
-.music-bar{
+.music-bar {
   padding-right: 800px;
 }
-.music-progress{
+.music-progress {
   width: 500px;
-  margin:  10px;
+  margin: 10px;
 }
-.music-progress .progress{
+.music-progress .progress {
   height: 2px;
   border-radius: 0;
-  background-color:gray;
-  margin-top: 0px; 
-  
+  background-color: gray;
+  margin-top: 0px;
 }
-.music-progress .music-progress::before{
-  content:"0.50";
+.music-progress .music-progress::before {
+  content: "0.50";
 }
 
-.music-progress .progress-bar{
+.music-progress .progress-bar {
   width: 0%;
   background-color: black;
   animation: width 100s infinite;
-
 }
 @keyframes width {
-  100%{width: 100%;}
-  
+  100% {
+    width: 100%;
+  }
 }
-.song-title strong{
+.song-title strong {
   color: white;
   font-size: 15px;
- 
- 
 }
-.song-title{
+.song-title {
   color: gray;
   font-size: 13px;
-   margin-top: 10px;
+  margin-top: 10px;
   padding: 10px;
 }
-.icon-left{
-  color:gray;
+.icon-left {
+  color: gray;
   font-size: 12px;
   margin-top: 40px;
   margin-right: 300px;
 }
-.icon-left:hover{
+.icon-left:hover {
   color: white;
 }
-.volume{
+.volume {
   font-size: 10px;
 }
-#myRanger{
-  
+#myRanger {
   height: 2px;
   border-radius: 0;
-  background-color:black;
+  background-color: black;
   margin-top: 0px;
-  
 }
-.icon-right{
- color: gray ;
- font-size: 10px;
- margin-left: 140px;
- padding: 10px;
- 
+.icon-right {
+  color: gray;
+  font-size: 10px;
+  margin-left: 140px;
+  padding: 10px;
 }
-.icon-right:hover{
+.icon-right:hover {
   color: white;
 }
-.image-play{
+.image-play {
   margin-left: 8px;
   padding-right: 8px;
 }
