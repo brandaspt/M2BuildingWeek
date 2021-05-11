@@ -208,6 +208,13 @@ content: "5.29";
  padding: 10px;
  
 }
+.icon-right:hover{
+  color: white;
+}
+.image-play{
+  margin-left: 8px;
+  padding-right: 8px;
+}
 /*
 ##############################
 End of album page
