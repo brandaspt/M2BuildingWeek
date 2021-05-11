@@ -24,7 +24,7 @@
     <!-- Own Css -->
     <link rel="stylesheet" href="styles.css" />
 
-    <title>Spotify Album Page</title>
+    <title>Spotify Album Page2</title>
   </head>
   <body>
     <div class="d-flex justify-content-start">
@@ -497,26 +497,31 @@
     <!-- footer starts -->
     <div class="container-fluid">
       <footer class="row fixed-bottom">
-        
-        <div class="col-5 ">
+        <div class="col-5">
           <!-- cureent played artist cover to be added -->
           <div class="row">
             <div class="col-1">
-          <img src="assets/home/images/shows/show01.jpeg" width="50" height="55px" alt="" class="mt-2 image-play">
-         </div>
-         <div class="col-4">
-          <p class="song-title"><strong>Song for my father</strong> Horace Silver </p>
-  
+              <img
+                src="assets/home/images/shows/show01.jpeg"
+                width="50"
+                height="55px"
+                alt=""
+                class="mt-2 image-play"
+              />
+            </div>
+            <div class="col-4">
+              <p class="song-title">
+                <strong>Song for my father</strong> Horace Silver
+              </p>
+            </div>
+            <div class="col-1 icon-left d-flex">
+              <i class="far fa-heart"></i>
+              <i class="far fa-address-card"></i>
+            </div>
+          </div>
         </div>
-        <div class="col-1  icon-left d-flex">
-            <i class="far fa-heart"></i>
-          <i class="far fa-address-card"></i> 
-      </div>
-      
-        </div>
-        </div>
-        <div class="col-4  d-flex flex-column">
-          <div class="d-flex  pt-2">
+        <div class="col-4 d-flex flex-column">
+          <div class="d-flex pt-2">
             <!-- shuffel -->
             <a href="#"
               ><svg
@@ -570,9 +575,6 @@
                   </svg> -->
             </button>
             <!-- next skip-end -->
-            
-
-
 
             <a href="#"
               ><svg
@@ -608,39 +610,31 @@
           </div>
           <div><!-- seek slider to be added --></div>
         </div>
-        <div class="col-3 ">
+        <div class="col-3">
           <!-- volume -->
           <div class="row mt-4 volume">
-            
             <div class="col-2 d-flex icon-right">
               <i class="fas fa-laptop-house"></i>
               <i class="fas fa-list-ul"></i>
               <i class="fas fa-volume-up"></i>
-            
-          </div>
-          <div class="slidecontainer slider col-3 mt-2">
-            <input type="range" min="1" max="100" value="100" id="myRange">
-          </div>
-           </div>
-        </div>
-        <div class="container music-bar d-flex">
-          <p class="d-flex text">0.00</p>
-        <div class="center-bar">
-        <div class="music-progress">
-          <div class="progress">
-            <div class="progress-bar">
-              
-
+            </div>
+            <div class="slidecontainer slider col-3 mt-2">
+              <input type="range" min="1" max="100" value="100" id="myRange" />
             </div>
           </div>
         </div>
-      </div>
-      <p class="d-flex text2">
-                5.30
-              </p>
-    </div>
+        <div class="container music-bar d-flex">
+          <p class="d-flex text">0.00</p>
+          <div class="center-bar">
+            <div class="music-progress">
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+          <p class="d-flex text2">5.30</p>
+        </div>
       </footer>
-      
     </div>
     <!-- footer ends -->
     <!-- audio -->
