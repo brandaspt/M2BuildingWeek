@@ -1,100 +1,100 @@
 const throwbackCards = [
   {
-    img: "./assets/images/mainPage/throwback/tile01.jpeg",
+    img: "./assets/home/images/throwback/tile01.jpeg",
     name: "Millenium Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile02.jpeg",
+    img: "./assets/home/images/throwback/tile02.jpeg",
     name: "Bloodflow Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile03.jpeg",
+    img: "./assets/home/images/throwback/tile03.jpeg",
     name: "David Bowie Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile04.jpeg",
+    img: "./assets/home/images/throwback/tile04.jpeg",
     name: "Bonobo Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile05.jpeg",
+    img: "./assets/home/images/throwback/tile05.jpeg",
     name: "M83 Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile06.jpeg",
+    img: "./assets/home/images/throwback/tile06.jpeg",
     name: "Repeat Rewind",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile07.jpeg",
+    img: "./assets/home/images/throwback/tile07.jpeg",
     name: "This is Supertramp",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile08.jpeg",
+    img: "./assets/home/images/throwback/tile08.jpeg",
     name: "Where is My Mind Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile09.jpeg",
+    img: "./assets/home/images/throwback/tile09.jpeg",
     name: "Calyx & TeebBee",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile10.jpeg",
+    img: "./assets/home/images/throwback/tile10.jpeg",
     name: "Radiohead Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile11.jpeg",
+    img: "./assets/home/images/throwback/tile11.jpeg",
     name: "The Police Radio",
   },
   {
-    img: "./assets/images/mainPage/throwback/tile12.jpeg",
+    img: "./assets/home/images/throwback/tile12.jpeg",
     name: "Sigma Radio",
   },
 ];
 const showsCards = [
   {
-    img: "./assets/images/mainPage/shows/show01.jpeg",
+    img: "./assets/home/images/shows/show01.jpeg",
     name: "The Joe Rogan Experience",
   },
   {
-    img: "./assets/images/mainPage/shows/show02.jpeg",
+    img: "./assets/home/images/shows/show02.jpeg",
     name: "Casefile True Crime",
   },
   {
-    img: "./assets/images/mainPage/shows/show03.jpeg",
+    img: "./assets/home/images/shows/show03.jpeg",
     name: "No Such Thing As A Fish",
   },
   {
-    img: "./assets/images/mainPage/shows/show04.jpeg",
+    img: "./assets/home/images/shows/show04.jpeg",
     name: "Stuff You Know",
   },
   {
-    img: "./assets/images/mainPage/shows/show05.jpeg",
+    img: "./assets/home/images/shows/show05.jpeg",
     name: "Hamish $ Andy",
   },
   {
-    img: "./assets/images/mainPage/shows/show06.jpeg",
+    img: "./assets/home/images/shows/show06.jpeg",
     name: "The Tim Ferriss Show",
   },
   {
-    img: "./assets/images/mainPage/shows/show07.jpeg",
+    img: "./assets/home/images/shows/show07.jpeg",
     name: "The Grade Cricketer",
   },
   {
-    img: "./assets/images/mainPage/shows/show08.jpeg",
+    img: "./assets/home/images/shows/show08.jpeg",
     name: "Economist Radio",
   },
   {
-    img: "./assets/images/mainPage/shows/show09.jpeg",
+    img: "./assets/home/images/shows/show09.jpeg",
     name: "Making Sense with Sam Harris",
   },
   {
-    img: "./assets/images/mainPage/shows/show10.jpeg",
+    img: "./assets/home/images/shows/show10.jpeg",
     name: "The Ricky Gervais Show",
   },
   {
-    img: "./assets/images/mainPage/shows/show11.jpeg",
+    img: "./assets/home/images/shows/show11.jpeg",
     name: "The History of Rome",
   },
   {
-    img: "./assets/images/mainPage/shows/show12.jpeg",
+    img: "./assets/home/images/shows/show12.jpeg",
     name: "The Jordan B. Peterson Podcast",
   },
 ];
@@ -175,5 +175,21 @@ mainSection.addEventListener("scroll", () => {
     }
   } else if (mainNav.classList.contains("bg-on")) {
     mainNav.classList.remove("bg-on");
+  }
+});
+
+// Music Player
+let audioElement = document.getElementById("audio-OneRepublic-Run");
+let btnPlayPause = document.getElementById("btn-play");
+let getIcon = document.getElementById("getIcon");
+btnPlayPause.addEventListener("click", function () {
+  if (audioElement.paused && getIcon.classList.contains("fa-play-circle")) {
+    audioElement.play();
+    getIcon.classList.remove("far", "fa-play-circle");
+    getIcon.classList.add("far", "fa-pause-circle");
+  } else {
+    audioElement.pause();
+    getIcon.classList.remove("far", "fa-pause-circle");
+    getIcon.classList.add("far", "fa-play-circle");
   }
 });
