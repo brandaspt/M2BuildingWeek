@@ -56,8 +56,6 @@ h6{
    font-size:xx-large;
     
 }
-
-
 .login-btn{
     float:right;
     padding: 10px 60px;
@@ -102,35 +100,107 @@ h6{
     padding-bottom: 20px;
 }
 
+
 /* End of login page */
 
-
 /* Start of home page */
-body{
-    height: 100vh;
+body {
+  height: 100vh;
 }
-h1{
-    margin-bottom: 1000px;
+h1 {
+  margin-bottom: 1000px;
 }
-aside{
-    background-color:  green;
-    height: 90vh;
-    position: fixed;
-    left: 0;
+aside {
+  background-color: #060c13;
+  height: 90vh;
+  position: fixed;
+  left: 0;
 }
-main{
-    background-color:  purple;
-    min-height: 200vh;
-    margin-left: auto;
-    margin-bottom: 10vh;
-    overflow-y: scroll;
+
+.nav-logo {
+  padding-top: 25px;
+  width: 180px;
 }
-footer{
-    height: 10vh;
-    width: 100vw;
-    background-color:  brown;
-    position: fixed;
-    bottom: 0;
+a {
+  color: gray;
+  text-decoration: none;
+}
+nav {
+  height: inherit;
+}
+nav .active {
+  color: white;
+}
+nav ul {
+  margin: 0;
+  margin-top: 20px;
+  margin-left: 5px;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 15px 0;
+}
+
+aside svg {
+  margin-right: 1em;
+}
+aside .btn {
+  margin: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  width: 200px;
+}
+aside .btn:nth-of-type(2) {
+  border: 2px solid #888988;
+  background-color: #151719;
+  color: #c2c3c3;
+}
+aside nav p {
+  font-size: 12px;
+  color: gray;
+}
+aside nav p:first-of-type {
+  margin-right: 10px;
+}
+aside nav p:nth-of-type(2) {
+  margin-left: 10px;
+}
+aside nav .line-between {
+  border-right: 2px solid gray;
+  height: 15px;
+  width: 2px;
+}
+
+main {
+  background-color: purple;
+
+  min-height: 200vh;
+  margin-left: auto;
+  margin-bottom: 10vh;
+}
+footer {
+  height: 10vh;
+  width: 100vw;
+  background-color: #2c2c2c;
+  position: fixed;
+  bottom: 0;
+}
+footer svg {
+  margin-right: 1.5em;
+}
+footer i {
+  margin-right: 1.2em;
+}
+footer #btn-play {
+  background-color: transparent;
+  border: none;
+}
+footer #getIcon {
+  color: #b2b2b1;
+  background-color: #2c2c2c;
+  font-size: 24px;
 }
 
 /* End of home page */
