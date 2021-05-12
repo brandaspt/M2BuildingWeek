@@ -72,6 +72,12 @@ const mainNav = document.querySelector(".main-nav");
 const heroContent = document.querySelector("main .hero-content");
 const albumsGrid = document.querySelector("#albums > .albums-cards");
 const topTracksGrid = document.querySelector("#top-tracks > .top-tracks-cards");
+const volumeInput = document.getElementById("volume-input");
+const playerTrackImg = document.getElementById("player-track-img");
+const playerTrackTitle = document.getElementById("player-track-title");
+const playerTrackArtist = document.getElementById("player-track-artist");
+const playerPlayBtn = document.getElementById("player-play-btn");
+const playerPauseBtn = document.getElementById("player-pause-btn");
 
 window.onload = () => {
   // Fetch artist data
@@ -118,6 +124,25 @@ window.onload = () => {
       populateTopTracks(fetchedTracks.data);
     })
     .catch((error) => console.log(error));
+
+  // Volume Input range
+  volumeInput.addEventListener("change", (e) => {
+    console.log("changed");
+    volumeInput.style.setProperty("--value", volumeInput.value);
+    volumeInput.style.setProperty(
+      "--min",
+      volumeInput.min === "" ? "0" : volumeInput.min
+    );
+    volumeInput.style.setProperty(
+      "--max",
+      volumeInput.max === "" ? "100" : volumeInput.max
+    );
+    volumeInput.style.setProperty("--value", volumeInput.value);
+  });
+
+  // Add event listener to player control buttons
+  playerPlayBtn.addEventListener("click", resumeTrack);
+  playerPauseBtn.addEventListener("click", pauseTrack);
 };
 
 const populateHeroContent = (artistData) => {
@@ -189,7 +214,7 @@ const populateTopTracks = (tracksData) => {
                   </svg>
                   
                 </button>
-                <button class="btn rounded-circle card-pause-btn d-none">
+                <button class="btn rounded-circle card-pause-btn">
                   <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="5" y="3" width="4" height="18" fill="currentColor"></rect>
                     <rect x="15" y="3" width="4" height="18" fill="currentColor"></rect>
@@ -215,40 +240,77 @@ const populateTopTracks = (tracksData) => {
 };
 
 const playTrack = (e) => {
+  const previousPlaying = document.querySelector(".card.playing");
+  if (previousPlaying) {
+    previousPlaying.querySelector("audio").pause();
+    previousPlaying.classList.remove("playing");
+  }
+
   // Card containing the clicked button
-  const closestCard = e.currentTarget.closest(".card");
+  const nowPlaying = e.currentTarget.closest(".card");
+  nowPlaying.classList.add("playing");
   // Audio element associated with the clicked button
-  const audioEl = closestCard.querySelector("audio");
+  const audioEl = nowPlaying.querySelector("audio");
 
   // Pause any others playing
-  topTracksGrid.querySelectorAll(".card").forEach((card) => {
-    // Looping through all track cards on the page
-    if (!card.querySelector("audio").paused) {
-      // If audio on current card is not paused (it means it's playing)
-      card.querySelector("audio").pause(); // Pause audio
-      card.querySelector(".card-play-btn").classList.remove("d-none"); // Show play button
-      card.querySelector(".card-pause-btn").classList.add("d-none"); // Hide pause button
-    }
-  });
+  // topTracksGrid.querySelectorAll(".card").forEach((card) => {
+  //   // Looping through all track cards on the page
+  //   if (!card.querySelector("audio").paused) {
+  //     // If audio on current card is not paused (it means it's playing)
+  //     card.querySelector("audio").pause(); // Pause audio
+  //     card.querySelector(".card-play-btn").classList.remove("d-none"); // Show play button
+  //     card.querySelector(".card-pause-btn").classList.add("d-none"); // Hide pause button
+  //   }
+  // });
 
   // Start playing audio
   audioEl.play();
 
   // Hide play button
-  closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
-  // Show pause button
-  closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
+  // closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
+  // // Show pause button
+  // closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
+
+  // Update footer player
+  // Track Info
+  playerTrackImg.src = nowPlaying.querySelector(".card-img-top").src;
+  playerTrackTitle.innerText =
+    nowPlaying.querySelector(".card-title").innerText;
+  playerTrackArtist.innerText =
+    nowPlaying.querySelector(".track-album").innerText;
+
+  // Player controls
+  // playerPauseBtn.classList.remove("d-none");
+  // if (!playerPlayBtn.classList.contains("d-none")) {
+  //   playerPlayBtn.classList.add("d-none");
+  // }
+  document.querySelector(".music-player").classList.add("playing");
+  document.querySelector(".progress-wrapper > p:last-child").innerText =
+    nowPlaying.querySelector(".card-text").innerText;
 };
 
-const pauseTrack = (e) => {
-  const closestCard = e.currentTarget.closest(".card");
-  const audioEl = closestCard.querySelector("audio");
+const pauseTrack = () => {
+  const nowPlaying = document.querySelector(".card.playing");
+  nowPlaying.querySelector("audio").pause();
+  nowPlaying.classList.remove("playing");
+  document.querySelector(".music-player").classList.remove("playing");
+  // const closestCard = e.currentTarget.closest(".card");
+  // const audioEl = closestCard.querySelector("audio");
 
-  audioEl.pause();
+  // audioEl.pause();
 
-  closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
-  closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
+  // closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
+  // closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
+
+  // Update footer player
+  // Player controls
+  // playerPlayBtn.classList.remove("d-none");
+  // if (!playerPauseBtn.classList.contains("d-none")) {
+  //   playerPauseBtn.classList.add("d-none");
+  // }
 };
+
+const resumeTrack = () => {};
 
 // Change active link on main nav
 const mainNavLinks = document.querySelectorAll(".main-nav a");
@@ -300,5 +362,5 @@ const secsToMins = (seconds) => {
   const intMins = Math.floor(seconds / 60);
   const remainingSecs = seconds % 60;
 
-  return `${intMins}m ${("0" + remainingSecs).slice(-2)}s`;
+  return `${intMins}:${("0" + remainingSecs).slice(-2)}`;
 };
