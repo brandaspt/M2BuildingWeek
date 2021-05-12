@@ -14,16 +14,15 @@ body {
 }
 aside {
   flex: 0 0 250px;
-  height: 90vh;
+  height: 93vh;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 main {
   overflow-y: scroll;
-  height: 90vh;
+  height: 93vh;
   position: relative;
   flex-grow: 1;
-
   scroll-behavior: smooth;
 }
 section {
@@ -37,6 +36,9 @@ a {
   color: #999999;
   letter-spacing: 1px;
   font-weight: 700;
+}
+p {
+  margin: 0;
 }
 
 /* Header */
@@ -171,7 +173,7 @@ aside nav .line-between {
 }
 .main-nav .show,
 .main-nav .collapsing {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .main-nav .show a,
 .main-nav .collapsing a {
@@ -190,7 +192,7 @@ aside nav .line-between {
 }
 .main-nav .navbar-toggler svg {
   color: #999999;
-  background-color: #99999934;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .main-nav a {
   color: #999999;
@@ -223,8 +225,9 @@ section > h2 {
   font-weight: 700;
   margin: 1em 0 0.75em;
 }
-#albums {
+section {
   padding-top: 20px;
+  margin-bottom: 50px;
 }
 #albums .card,
 #top-tracks .card {
@@ -250,7 +253,8 @@ section > h2 {
   color: #929292;
   font-size: 0.8em;
 }
-.card-play-btn {
+.card-play-btn,
+.card-pause-btn {
   display: flex;
   align-items: center;
   position: absolute;
@@ -262,6 +266,8 @@ section > h2 {
   color: white;
   text-align: center;
   filter: drop-shadow(0 5px 10px black);
+}
+.card-play-btn {
   transform: translateY(50%) scaleY(0);
   opacity: 0;
   transition: 0.5s;
@@ -280,13 +286,64 @@ section > h2 {
 /* Footer */
 footer {
   background-color: #2c2c2c;
-}
-footer > div {
-  height: 5vh;
+  color: #dadada;
 }
 footer svg {
-  margin-right: 1.5em;
+  color: #dadada;
+  cursor: pointer;
 }
+footer svg:hover {
+  color: #dadada;
+}
+footer > div {
+  height: 7vh;
+}
+footer .track-info {
+  width: 30%;
+}
+footer .player-controls {
+  width: 60%;
+}
+footer .extra-controls {
+  width: 30%;
+}
+footer .track-text {
+  font-size: 0.7em;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+footer .track-text p:first-child {
+  color: white;
+}
+footer .track-text p:last-child {
+  color: #888988;
+}
+footer .player-controls-btns > * {
+  color: white;
+  margin: 0 10px;
+}
+.progress {
+  width: 100%;
+  max-width: 500px;
+  height: 5px;
+  background-color: #888988;
+}
+.progress-bar {
+  background-color: #dadada;
+}
+.progress-wrapper p {
+  font-size: 12px;
+  color: #dadada;
+  min-width: 40px;
+  text-align: center;
+}
+footer .extra-controls > * {
+  margin: 0 5px;
+}
+#volume-input {
+  width: 100px;
+}
+
 footer i {
   margin-right: 1.2em;
 }
@@ -295,7 +352,7 @@ footer #btn-play {
   border: none;
 }
 footer #getIcon {
-  color: #b2b2b1;
+  color: #dadada;
   background-color: #2c2c2c;
   font-size: 24px;
 }
@@ -311,7 +368,7 @@ footer #getIcon {
 .center-bar::after{
 content: "5.29";
 } */
-.text {
+/* .text {
   color: gray;
   margin-left: 400px;
   font-size: 10px;
@@ -390,7 +447,7 @@ content: "5.29";
 .image-play {
   margin-left: 8px;
   padding-right: 8px;
-}
+} */
 /*
 ##############################
 End of home page

@@ -184,10 +184,13 @@ const populateTopTracks = (tracksData) => {
       track.title
     }"/>
                 <button class="btn rounded-circle card-play-btn">
-                  <svg class="play-track-icon" height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
                     <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
                   </svg>
-                  <svg class="pause-track-icon d-none" height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                  
+                </button>
+                <button class="btn rounded-circle card-pause-btn d-none">
+                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="5" y="3" width="4" height="18" fill="currentColor"></rect>
                     <rect x="15" y="3" width="4" height="18" fill="currentColor"></rect>
                   </svg>
@@ -203,26 +206,48 @@ const populateTopTracks = (tracksData) => {
         </div>`;
     if (counter === 12) break;
   }
-  topTracksGrid.querySelectorAll("button").forEach((button) => {
-    button.addEventListener("click", togglePlayTrack);
+  topTracksGrid.querySelectorAll(".card-play-btn").forEach((button) => {
+    button.addEventListener("click", playTrack);
+  });
+  topTracksGrid.querySelectorAll(".card-pause-btn").forEach((button) => {
+    button.addEventListener("click", pauseTrack);
   });
 };
 
-const togglePlayTrack = (e) => {
+const playTrack = (e) => {
+  // Card containing the clicked button
+  const closestCard = e.currentTarget.closest(".card");
+  // Audio element associated with the clicked button
+  const audioEl = closestCard.querySelector("audio");
+
+  // Pause any others playing
+  topTracksGrid.querySelectorAll(".card").forEach((card) => {
+    // Looping through all track cards on the page
+    if (!card.querySelector("audio").paused) {
+      // If audio on current card is not paused (it means it's playing)
+      card.querySelector("audio").pause(); // Pause audio
+      card.querySelector(".card-play-btn").classList.remove("d-none"); // Show play button
+      card.querySelector(".card-pause-btn").classList.add("d-none"); // Hide pause button
+    }
+  });
+
+  // Start playing audio
+  audioEl.play();
+
+  // Hide play button
+  closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
+  // Show pause button
+  closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
+};
+
+const pauseTrack = (e) => {
   const closestCard = e.currentTarget.closest(".card");
   const audioEl = closestCard.querySelector("audio");
 
-  if (audioEl.paused) {
-    // Pause any other audios playing
-    document.querySelectorAll("audio").forEach((audio) => {
-      audio.pause();
-    });
-    // Start playing current
-    audioEl.play();
-  } else {
-    // Pause current
-    audioEl.pause();
-  }
+  audioEl.pause();
+
+  closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
+  closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
 };
 
 // Change active link on main nav
@@ -251,20 +276,20 @@ mainSection.addEventListener("scroll", () => {
 });
 
 // Music Player
-let audioElement = document.getElementById("audio-OneRepublic-Run");
-let btnPlayPause = document.getElementById("btn-play");
-let getIcon = document.getElementById("getIcon");
-btnPlayPause.addEventListener("click", function () {
-  if (audioElement.paused && getIcon.classList.contains("fa-play-circle")) {
-    audioElement.play();
-    getIcon.classList.remove("far", "fa-play-circle");
-    getIcon.classList.add("far", "fa-pause-circle");
-  } else {
-    audioElement.pause();
-    getIcon.classList.remove("far", "fa-pause-circle");
-    getIcon.classList.add("far", "fa-play-circle");
-  }
-});
+// let audioElement = document.getElementById("audio-OneRepublic-Run");
+// let btnPlayPause = document.getElementById("btn-play");
+// let getIcon = document.getElementById("getIcon");
+// btnPlayPause.addEventListener("click", function () {
+//   if (audioElement.paused && getIcon.classList.contains("fa-play-circle")) {
+//     audioElement.play();
+//     getIcon.classList.remove("far", "fa-play-circle");
+//     getIcon.classList.add("far", "fa-pause-circle");
+//   } else {
+//     audioElement.pause();
+//     getIcon.classList.remove("far", "fa-pause-circle");
+//     getIcon.classList.add("far", "fa-play-circle");
+//   }
+// });
 
 /*
 ##########################
