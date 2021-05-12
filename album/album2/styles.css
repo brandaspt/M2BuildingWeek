@@ -1,16 +1,14 @@
-/*
-##############################
-Start of album page
-##############################
-*/
 body {
-  height: 100vh;
-  background: rgb(16, 16, 16);
-  /*  background: linear-gradient(
-    135deg,
-    rgba(37, 70, 109, 1) 46%,
-    rgba(0, 0, 0, 1) 100%
-  ); */
+  background-color: #2a472a;
+  background-image: linear-gradient(
+    180deg,
+    rgba(42, 71, 42, 1) 10%,
+    rgba(2, 2, 2, 0.8) 47%
+  );
+
+  background-attachment: scroll;
+
+  font-family: "Montserrat", sans-serif;
 }
 aside {
   flex: 0 0 250px;
@@ -94,43 +92,97 @@ aside nav .line-between {
   height: 15px;
   width: 2px;
 }
-
 /* main */
-main > .container > .row {
-  margin: 50px 0px 10px 20px; /* ? */
+main nav {
+  position: fixed;
+  top: 0;
+  /* right: 25px; */
+  left: 250px;
+  width: calc(100vw - 267px);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 60px;
+  height: 60px;
 }
-.album-cover {
-  text-align: center;
+main h1 {
+  color: #ffffff;
+  font-size: 4em;
+  font-weight: 800;
+  margin-bottom: 25px;
 }
-.album-cover .btn {
-  background-color: #1cb955;
-  font-weight: 700;
-  letter-spacing: 1px;
+main h1 ~ p {
+  margin-bottom: 8px;
+  font-size: 1em;
 }
-.album-cover button {
-  background-color: transparent;
-  border: none;
+main p,
+th,
+td {
+  color: #9b9c9b;
+  font-weight: bold;
 }
-.album-cover p {
-  font-size: 12px;
+main h6 {
+  color: white;
+  font-weight: 600;
 }
-.album-cover svg.bi-three-dots {
-  margin-left: 10px;
+main .fa-circle {
+  color: white;
+  font-size: 6px;
 }
-p {
-  color: #787878;
-  font-weight: 700;
+main nav > div > div button.btn {
+  border-radius: 50%;
+  border-color: transparent;
+
+  background-color: rgba(0, 0, 0, 0.253);
+  margin-right: 1em;
 }
-/* when does margin-left or margin-right auto works? and how can i better select */
-.col-md-1,
-.col-md-2 {
-  display: flex;
-  justify-content: flex-end;
+main button i {
+  color: whitesmoke;
 }
-.tack-lists svg {
-  margin-left: auto;
+thead {
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+}
+table td > div > div {
+  margin-right: 15px;
+  height: 60px;
+}
+table td > div > div img {
+  height: inherit;
+}
+table > thead > tr > th:nth-child(5) > i {
+  padding-left: 4em;
+}
+table tr td:nth-child(5) {
+  padding-left: 4.5em;
 }
 
+tr:hover {
+  background-color: #212521;
+}
+main img:first-of-type {
+  margin-right: 20px;
+}
+
+main .fa-heart {
+  font-size: 2em;
+  margin-right: 1em;
+  color: #b3b8b2;
+}
+#playBtn {
+  font-size: 4em;
+  color: #1cb955;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 0.7em;
+}
+#playBtn:hover {
+  transform: scale(1.2);
+}
+main svg {
+  color: #b3b8b2;
+}
+main svg:hover {
+  color: white;
+}
 /* Footer */
 footer {
   background-color: #2c2c2c;
@@ -160,11 +212,11 @@ footer #getIcon {
   width: 40%;
 }
 /* .center-bar::before{
-  content: "0.50";
-}
-.center-bar::after{
-content: "5.29";
-} */
+    content: "0.50";
+  }
+  .center-bar::after{
+  content: "5.29";
+  } */
 .text {
   color: gray;
   margin-left: 400px;
@@ -246,7 +298,7 @@ content: "5.29";
   padding-right: 8px;
 }
 /*
-##############################
-End of album page
-##############################
-*/
+  ##############################
+  End of album page
+  ##############################
+  */
