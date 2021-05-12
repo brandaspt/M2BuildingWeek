@@ -64,7 +64,7 @@ header {
 .hero-content {
   position: absolute;
   width: calc(100vw - 250px);
-  top: 140px;
+  top: 100px;
   left: 0px;
   letter-spacing: 1px;
 }
@@ -169,6 +169,14 @@ aside nav .line-between {
   z-index: 2;
   transition: background-color 0.7s;
 }
+.main-nav .show,
+.main-nav .collapsing {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.main-nav .show a,
+.main-nav .collapsing a {
+  padding-left: 15px;
+}
 .main-nav.bg-on {
   position: fixed;
   top: 0;
@@ -219,42 +227,54 @@ section > h2 {
   padding-top: 20px;
 }
 #albums .card,
-#shows .card {
+#top-tracks .card {
   background-color: rgba(0, 0, 0, 0.123);
   cursor: pointer;
   transition: 0.5s;
 }
 #albums .card:hover,
-#shows .card:hover {
+#top-tracks .card:hover {
   background-color: rgba(255, 255, 255, 0.123);
 }
-#albums .card-title,
-#shows .card-title {
+
+.card-title {
   color: white;
   font-size: 0.9em;
 }
-#albums .card-text {
+.track-album {
   color: #929292;
+  font-size: 0.8em;
+  margin: 0;
+}
+.card-text {
+  color: #929292;
+  font-size: 0.8em;
 }
 .card-play-btn {
   display: flex;
   align-items: center;
   position: absolute;
-  right: 20px;
-  top: 123px;
+  right: 10px;
+  bottom: 10px;
   height: 40px;
   width: 40px;
   background-color: #1cb955;
   color: white;
   text-align: center;
   filter: drop-shadow(0 5px 10px black);
-  transform: translateY(100%) scaleY(0);
+  transform: translateY(50%) scaleY(0);
   opacity: 0;
   transition: 0.5s;
 }
-#albums .card:hover .card-play-btn {
+#albums .card:hover .card-play-btn,
+#top-tracks .card:hover .card-play-btn {
   transform: translateY(0) scaleY(1);
   opacity: 1;
+}
+
+/* Top Tracks section */
+#top-tracks .top-tracks-cards img {
+  border-radius: 20px;
 }
 
 /* Footer */
