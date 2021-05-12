@@ -96,8 +96,12 @@ aside nav .line-between {
 main nav {
   position: fixed;
   top: 0;
+  /* right: 25px; */
   left: 250px;
-  width: calc(100vw-250px);
+  width: calc(100vw - 267px);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 60px;
+  height: 60px;
 }
 main h1 {
   color: #ffffff;
