@@ -93,6 +93,22 @@ aside nav .line-between {
   width: 2px;
 }
 /* main */
+main nav {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100vw-250px);
+}
+main h1 {
+  color: #ffffff;
+  font-size: 4em;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+main h1 ~ p {
+  margin-bottom: 8px;
+  font-size: 1em;
+}
 main p,
 th,
 td {
@@ -103,13 +119,9 @@ main h6 {
   color: white;
   font-weight: 600;
 }
-main nav {
-  position: fixed;
-  top: 0;
-  width: calc(100vw-250px);
-}
-main nav + div {
-  height: calc(100vw-50px);
+main .fa-circle {
+  color: white;
+  font-size: 6px;
 }
 main nav > div > div button.btn {
   border-radius: 50%;
@@ -145,15 +157,7 @@ tr:hover {
 main img:first-of-type {
   margin-right: 20px;
 }
-main h1 {
-  color: #ffffff;
-  font-size: 5em;
-  font-weight: 800;
-  margin-bottom: 25px;
-}
-main h1 ~ p {
-  margin-bottom: 8px;
-}
+
 main .fa-heart {
   font-size: 2em;
   margin-right: 1em;
