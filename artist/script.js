@@ -73,13 +73,14 @@ const heroContent = document.querySelector("main .hero-content");
 const albumsGrid = document.querySelector("#albums > .albums-cards");
 const topTracksGrid = document.querySelector("#top-tracks > .top-tracks-cards");
 const volumeInput = document.getElementById("volume-input");
-const playerTrackImg = document.getElementById("player-track-img");
 const playerTrackTitle = document.getElementById("player-track-title");
+const playerTrackImg = document.getElementById("player-track-img");
 const playerTrackArtist = document.getElementById("player-track-artist");
 const playerPlayBtn = document.getElementById("player-play-btn");
 const playerPauseBtn = document.getElementById("player-pause-btn");
 const playerPreviousBtn = document.getElementById("previous-track-btn");
 const playerNextBtn = document.getElementById("next-track-btn");
+const playerDuration = document.getElementById("player-duration");
 
 window.onload = () => {
   // Fetch artist data
@@ -144,17 +145,19 @@ window.onload = () => {
 
   // Add event listener to player control buttons
   playerPlayBtn.addEventListener("click", () => {
-    playTrack(pausedCard());
+    playTrack(playerSongCard());
   });
   playerPauseBtn.addEventListener("click", pauseTrack);
   playerPreviousBtn.addEventListener("click", () => {
     const previousCard =
-      pausedCard().parentElement.previousElementSibling.querySelector(".card");
+      playerSongCard().parentElement.previousElementSibling.querySelector(
+        ".card"
+      );
     playTrack(previousCard);
   });
   playerNextBtn.addEventListener("click", () => {
     const nextCard =
-      pausedCard().parentElement.nextElementSibling.querySelector(".card");
+      playerSongCard().parentElement.nextElementSibling.querySelector(".card");
     playTrack(nextCard);
   });
 };
@@ -254,6 +257,18 @@ const populateTopTracks = (tracksData) => {
   topTracksGrid.querySelectorAll(".card-pause-btn").forEach((button) => {
     button.addEventListener("click", pauseTrack);
   });
+
+  initMusicPlayer();
+};
+
+// Initialize music player
+const initMusicPlayer = () => {
+  const firstCard = topTracksGrid.querySelector(".card");
+  console.log(firstCard);
+  playerTrackTitle.innerText = firstCard.querySelector(".card-title").innerText;
+  playerTrackImg.src = firstCard.querySelector(".card-img-top").src;
+  playerTrackArtist.innerText = document.querySelector("h1").innerText;
+  playerDuration.innerText = firstCard.querySelector(".card-text").innerText;
 };
 
 const playTrack = (card) => {
@@ -299,8 +314,7 @@ const playTrack = (card) => {
   //   playerPlayBtn.classList.add("d-none");
   // }
   document.querySelector(".music-player").classList.add("playing");
-  document.querySelector(".progress-wrapper > p:last-child").innerText =
-    card.querySelector(".card-text").innerText;
+  playerDuration.innerText = card.querySelector(".card-text").innerText;
 };
 
 const pauseTrack = () => {
@@ -324,7 +338,7 @@ const pauseTrack = () => {
   // }
 };
 
-const pausedCard = () => {
+const playerSongCard = () => {
   const trackName = playerTrackTitle.innerText;
   const allCards = topTracksGrid.querySelectorAll(".card");
 
