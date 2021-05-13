@@ -78,20 +78,23 @@ header {
   width: 140px;
   letter-spacing: 1px;
 }
-.hero-content .header-btns > button:first-child {
+.hero-content .hero-play-btn {
   background-color: #1cb955;
   border: 2px solid #1cb955;
   color: white;
   backface-visibility: hidden;
   transition: all 0.5s;
 }
-.hero-content .header-btns > button:nth-of-type(2) {
+.hero-content .hero-follow-btn {
   color: white;
   margin: 0 10px;
   border: 2px solid white;
   background-color: rgba(0, 0, 0, 0.4);
   backface-visibility: hidden;
   transition: all 0.5s;
+}
+.hero-follow-btn.followed {
+  background-color: #1cb955;
 }
 .hero-content .header-btns i {
   color: white;
@@ -315,6 +318,21 @@ section {
 
 #top-tracks .top-tracks-cards img {
   border-radius: 20px;
+}
+
+/* About section */
+.about-hero {
+  height: 60vh;
+  background-image: url("https://i.scdn.co/image/d92f9ea6047df5634eb46b4a2a6a032e3c4e29c2");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  color: white;
+}
+.about-description {
+  height: 30%;
+  overflow-y: scroll;
+  cursor: ns-resize;
 }
 
 /* Footer */

@@ -167,14 +167,37 @@ const populateHeroContent = (artistData) => {
     <p class="listeners fw-bold m-0">${artistData.nb_fan.toLocaleString()}</p>
     <h1 class="artist-name my-5">${artistData.name}</h1>
     <div class="d-flex align-items-center header-btns">
-        <button type="button" class="btn rounded-pill">PLAY</button>
+        <button type="button" class="btn rounded-pill hero-play-btn">PLAY</button>
         <button
             type="button"
-            class="btn btn-outline-secondary rounded-pill"
+            class="btn btn-outline-secondary rounded-pill hero-follow-btn"
         >FOLLOW</button>
         <i class="fas fa-ellipsis-h"></i>
     </div>
   `;
+
+  // Add ev listener to hero play btn
+  heroContent.querySelector(".hero-play-btn").addEventListener("click", () => {
+    playTrack(playerSongCard());
+  });
+
+  // Add ev listener to hero follow btn
+  heroContent
+    .querySelector(".hero-follow-btn")
+    .addEventListener("click", (event) => {
+      const heroFollowBtn = event.currentTarget;
+      heroFollowBtn.classList.toggle("followed");
+      if (heroFollowBtn.classList.contains("followed")) {
+        heroFollowBtn.innerText = "FOLLOWED";
+      } else {
+        heroFollowBtn.innerText = "FOLLOW";
+      }
+    });
+
+  // Populate About section listeners
+  document.getElementById("about-listeners").innerText = `${
+    document.querySelector(".listeners").innerText
+  } monthly listeners`;
 };
 
 const populateAlbums = (albumsData) => {
