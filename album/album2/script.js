@@ -34,3 +34,15 @@ playBtn.addEventListener("click", function () {
     playBtn.classList.add("fas", "fa-play-circle");
   }
 });
+const mainSection = document.querySelector("main");
+const mainNav = document.querySelector(".main-nav");
+mainSection.addEventListener("scroll", () => {
+  if (mainSection.scrollTop > 120) {
+    if (!mainNav.classList.contains("bg-on")) {
+      mainNav.classList.add("bg-on");
+    }
+  } else if (mainNav.classList.contains("bg-on")) {
+    mainNav.classList.remove("bg-on");
+  }
+});
+

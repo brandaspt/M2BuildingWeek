@@ -101,13 +101,16 @@ main nav {
   left: 250px;
   width: calc(100vw - 250px);
 
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 0 60px;
   height: 60px;
 }
+.main-nav.bg-on {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 main h1 {
   color: #ffffff;
-  font-size: 4em;
+  font-size: 4vw;
   font-weight: 800;
   margin-bottom: 25px;
 }
