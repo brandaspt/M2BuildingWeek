@@ -1,0 +1,44 @@
+body {
+  height: 100vh;
+  background: rgb(37, 70, 109);
+  background: linear-gradient(
+    135deg,
+    rgba(37, 70, 109, 1) 46%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+aside {
+  flex: 0 0 250px;
+  height: 93vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+main {
+  overflow-y: scroll;
+  height: 93vh;
+  position: relative;
+  flex-grow: 1;
+  scroll-behavior: smooth;
+}
+section {
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+section > h2 {
+  color: white;
+  font-weight: 700;
+  margin: 1em 0 0.75em;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #999999;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+p {
+  margin: 0;
+}
