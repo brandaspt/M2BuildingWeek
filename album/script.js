@@ -1,7 +1,19 @@
 
-let heart=document.querySelector(".bi-heart")
+let heart=document.querySelector(".fa-heart")
 heart.addEventListener("click",function(){
-    heart.style.backgroundColor="red"
+  if(heart.classList.contains("far"))
+  {
+     heart.classList.remove("far")
+  heart.classList.add("fas")
+  heart.style.color = "green";
+ 
+  }
+  else{
+    heart.classList.remove("fas")
+    heart.classList.add("far")
+    heart.style.color = "#b4b8b2";
+
+  }
     
 })
 let btnPlay=document.getElementById("btn-play")

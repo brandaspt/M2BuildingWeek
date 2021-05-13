@@ -1,7 +1,19 @@
 let heart = document.querySelector(".fa-heart");
 heart.addEventListener("click", function () {
-  heart.style.backgroundColor = "green";
-  heart.style.borderRadius = "50%";
+  if(heart.classList.contains("far"))
+  {
+     heart.classList.remove("far")
+  heart.classList.add("fas")
+  heart.style.color = "green";
+ 
+  }
+  else{
+    heart.classList.remove("fas")
+    heart.classList.add("far")
+    heart.style.color = "#b4b8b2";
+
+  }
+ 
 });
 // Music Player
 let audioElement = document.getElementById("audio-OneRepublic-Run");
@@ -14,11 +26,11 @@ playBtn.addEventListener("click", function () {
     playBtn.classList.contains("fa-play-circle")
   ) {
     audioElement.play();
-    playBtn.classList.remove("far", "fa-play-circle");
-    playBtn.classList.add("far", "fa-pause-circle");
+    playBtn.classList.remove("fas", "fa-play-circle");
+    playBtn.classList.add("fas", "fa-pause-circle");
   } else {
     audioElement.pause();
-    playBtn.classList.remove("far", "fa-pause-circle");
-    playBtn.classList.add("far", "fa-play-circle");
+    playBtn.classList.remove("fas", "fa-pause-circle");
+    playBtn.classList.add("fas", "fa-play-circle");
   }
 });
