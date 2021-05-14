@@ -13,15 +13,6 @@ footer svg:hover {
 footer > div {
   height: 100px;
 }
-footer .track-info {
-  width: 30%;
-}
-footer .player-controls {
-  width: 60%;
-}
-footer .extra-controls {
-  width: 30%;
-}
 footer .track-text {
   font-size: 0.7em;
   padding: 0 5px;
@@ -32,6 +23,25 @@ footer .track-text p:first-child {
 }
 footer .track-text p:last-child {
   color: #888988;
+}
+.track-info svg {
+  display: none;
+}
+@media screen and (min-width: 576px) {
+  .track-info svg {
+    display: block;
+  }
+  footer .extra-controls > * {
+    display: none;
+  }
+  footer .extra-controls > * {
+    margin: 0 5px;
+  }
+}
+
+/* Player controls */
+footer .player-controls {
+  flex-grow: 1;
 }
 footer .player-controls-btns > * {
   color: white;
@@ -61,10 +71,8 @@ footer .player-controls-btns > * {
   min-width: 40px;
   text-align: center;
 }
-footer .extra-controls > * {
-  margin: 0 5px;
-}
 
+/* Extra controls */
 /* Volume input range */
 #volume-input {
   width: 100px;
@@ -135,4 +143,16 @@ footer .extra-controls > * {
     #888988;
 }
 
+/* Extra controls */
+footer .extra-controls > * {
+  display: none;
+}
+@media screen and (min-width: 576px) {
+  footer .extra-controls > * {
+    display: block;
+  }
+  footer .extra-controls > * {
+    margin: 0 5px;
+  }
+}
 /* End of volume input range */
