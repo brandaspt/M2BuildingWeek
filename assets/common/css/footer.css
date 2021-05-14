@@ -11,7 +11,7 @@ footer svg:hover {
   color: #dadada;
 }
 footer > div {
-  height: 7vh;
+  height: 100px;
 }
 footer .track-info {
   width: 30%;

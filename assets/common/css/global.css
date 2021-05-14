@@ -9,13 +9,13 @@ body {
 }
 aside {
   flex: 0 0 250px;
-  height: 93vh;
+  height: calc(100vh - 100px);
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 main {
   overflow-y: scroll;
-  height: 93vh;
+  height: calc(100vh - 100px);
   position: relative;
   flex-grow: 1;
   scroll-behavior: smooth;

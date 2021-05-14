@@ -22,6 +22,9 @@
   list-style: none;
   margin: 15px 0;
 }
+.side-navbar a:hover {
+  color: rgb(180, 180, 180);
+}
 
 aside svg {
   margin-right: 1em;
@@ -62,7 +65,7 @@ aside .btn {
 .rounded-pill {
   border: 2px solid #888988;
   background-color: #151719;
-  color: #151719;
+  color: white;
 }
 aside nav p {
   font-size: 12px;

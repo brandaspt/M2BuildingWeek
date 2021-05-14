@@ -107,12 +107,10 @@ header {
   color: #999999;
 }
 
-.main-nav a:hover,
-.side-navbar a:hover {
+.main-nav a:hover {
   color: rgb(180, 180, 180);
 }
-.main-nav a.active,
-.side-navbar a.active {
+.main-nav a.active {
   color: white;
   position: relative;
 }
