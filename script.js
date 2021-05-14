@@ -1,3 +1,11 @@
+import {
+  initMusicPlayer,
+  playTrack,
+  pauseTrack,
+  playerSongCard,
+  secsToMins,
+  activeNavLink,
+} from "./assets/common/js/player.js";
 const throwbackCards = [
   {
     img: "./assets/home/images/throwback/tile01.jpeg",
@@ -99,18 +107,81 @@ const showsCards = [
   },
 ];
 
-window.onload = () => {
-  populateThrowback();
-  populateShows();
-};
-
 /*
 ##############################
 Global Selectors
 ##############################
 */
-const mainSection = document.querySelector("main");
+// Main nav
 const mainNav = document.querySelector(".main-nav");
+const mainNavLinks = document.querySelectorAll(".main-nav a");
+
+// Main section
+const mainSection = document.querySelector("main");
+
+// Search
+const searchForm = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
+const searchGrid = document.querySelector(".search-grid");
+
+// Player
+const playerPlayBtn = document.getElementById("player-play-btn");
+const playerPauseBtn = document.getElementById("player-pause-btn");
+const playerPreviousBtn = document.getElementById("previous-track-btn");
+const playerNextBtn = document.getElementById("next-track-btn");
+const volumeInput = document.getElementById("volume-input");
+
+window.onload = () => {
+  // Add ev listener to main nav links
+  for (const link of mainNavLinks) {
+    link.addEventListener("click", activeNavLink);
+  }
+
+  // Populate sections
+  populateThrowback();
+  populateShows();
+
+  // Add ev listener to search form
+  searchForm.addEventListener("submit", (e) => {
+    fetchSearch();
+    e.preventDefault();
+  });
+
+  // Volume Input range
+  volumeInput.addEventListener("change", (e) => {
+    console.log("changed");
+    volumeInput.style.setProperty("--value", volumeInput.value);
+    volumeInput.style.setProperty(
+      "--min",
+      volumeInput.min === "" ? "0" : volumeInput.min
+    );
+    volumeInput.style.setProperty(
+      "--max",
+      volumeInput.max === "" ? "100" : volumeInput.max
+    );
+    volumeInput.style.setProperty("--value", volumeInput.value);
+  });
+
+  // Add event listener to player control buttons
+  playerPlayBtn.addEventListener("click", () => {
+    playTrack(playerSongCard(searchGrid));
+  });
+  playerPauseBtn.addEventListener("click", pauseTrack);
+  playerPreviousBtn.addEventListener("click", () => {
+    const previousCard =
+      playerSongCard(
+        searchGrid
+      ).parentElement.previousElementSibling.querySelector(".card");
+    playTrack(previousCard);
+  });
+  playerNextBtn.addEventListener("click", () => {
+    const nextCard =
+      playerSongCard(searchGrid).parentElement.nextElementSibling.querySelector(
+        ".card"
+      );
+    playTrack(nextCard);
+  });
+};
 
 const populateThrowback = () => {
   const cardsGrid = document.querySelector("#throwback > .throwback-cards");
@@ -153,19 +224,82 @@ const populateShows = () => {
   }
 };
 
-// Change active link on main nav
-const mainNavLinks = document.querySelectorAll(".main-nav a");
-const activeNavLink = (e) => {
-  // Remove class from previous active
-  const previousActive = document.querySelector(".main-nav a.active");
-  previousActive.classList.remove("active");
-
-  // Add class to new active
-  e.currentTarget.classList.add("active");
+// Fetch tracks from API using user's search string
+const fetchSearch = () => {
+  const searchString = searchInput.value;
+  fetch(
+    `https://striveschool-api.herokuapp.com/api/deezer/search?q=${searchString}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDYzMWYwNDQyNGY0NzAwMTUzZGVmY2MiLCJpYXQiOjE2MTkxNjYyNTMsImV4cCI6MTYyMDM3NTg1M30.qqMlSKGggXQ_6F_5dyAsIxEFzCFsQZUF6LHGbFMz3Is",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((fetchedTracks) => {
+      populateSearch(fetchedTracks.data);
+    })
+    .catch((error) => console.log(error));
 };
-for (const link of mainNavLinks) {
-  link.addEventListener("click", activeNavLink);
-}
+
+// Populate search section
+const populateSearch = (data) => {
+  // If no results found display alert message
+  if (data.length === 0) {
+    document.getElementById("no-results-alert").classList.add("show");
+    setTimeout(() => {
+      document.getElementById("no-results-alert").classList.remove("show");
+    }, 2000);
+    return;
+  }
+  searchGrid.innerHTML = "";
+  let counter = 0;
+  for (const track of data) {
+    counter++;
+    searchGrid.innerHTML += `
+        <div class="col p-0">
+          <div class="card border-0 p-2 mx-1 h-100">
+              <div class="w-100 position-relative">
+                <img src="${track.album.cover_big}" class="card-img-top" alt="${
+      track.title
+    }"/>
+                <button class="btn rounded-circle card-play-btn">
+                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                    <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                  </svg>                 
+                </button>
+                <button class="btn rounded-circle card-pause-btn">
+                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="5" y="3" width="4" height="18" fill="currentColor"></rect>
+                    <rect x="15" y="3" width="4" height="18" fill="currentColor"></rect>
+                  </svg>
+                </button>
+              </div>
+              <div class="card-body text-center p-1 d-flex flex-column justify-content-between">
+                <p class="card-title fw-bold">${track.title}</p>
+                <p class="track-artist fw-bold">${track.artist.name}</p>
+                <p class="card-text">${secsToMins(track.duration)}</p>
+              </div>
+              <audio src="${track.preview}"></audio>
+          </div>
+        </div>`;
+    if (counter === 12) break;
+  }
+
+  searchGrid.querySelectorAll(".card-play-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const closestCard = button.closest(".card");
+      playTrack(closestCard);
+    });
+  });
+  searchGrid.querySelectorAll(".card-pause-btn").forEach((button) => {
+    button.addEventListener("click", pauseTrack);
+  });
+
+  initMusicPlayer(searchGrid);
+};
 
 // Set bg color for main nav upon scroll
 mainSection.addEventListener("scroll", () => {
@@ -175,21 +309,5 @@ mainSection.addEventListener("scroll", () => {
     }
   } else if (mainNav.classList.contains("bg-on")) {
     mainNav.classList.remove("bg-on");
-  }
-});
-
-// Music Player
-let audioElement = document.getElementById("audio-OneRepublic-Run");
-let btnPlayPause = document.getElementById("btn-play");
-let getIcon = document.getElementById("getIcon");
-btnPlayPause.addEventListener("click", function () {
-  if (audioElement.paused && getIcon.classList.contains("fa-play-circle")) {
-    audioElement.play();
-    getIcon.classList.remove("far", "fa-play-circle");
-    getIcon.classList.add("far", "fa-pause-circle");
-  } else {
-    audioElement.pause();
-    getIcon.classList.remove("far", "fa-pause-circle");
-    getIcon.classList.add("far", "fa-play-circle");
   }
 });

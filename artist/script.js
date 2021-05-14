@@ -1,79 +1,44 @@
-// const artistsObj = [
-//   {
-//     name: "Bonobo",
-//     listeners: "3,017,987",
-//     albums: [
-//       {
-//         albName: "fabric presents Bonobo (DJ Mix)",
-//         albCover: "../assets/artist/images/albumCovers/album1.jpeg",
-//         albYear: 2019,
-//       },
-//       {
-//         albName: "Migration",
-//         albCover: "../assets/artist/images/albumCovers/album2.jpeg",
-//         albYear: 2017,
-//       },
-//       {
-//         albName: "The North Borders Tour - Live",
-//         albCover: "../assets/artist/images/albumCovers/album3.jpeg",
-//         albYear: 2014,
-//       },
-//       {
-//         albName: "Late Night Tales",
-//         albCover: "../assets/artist/images/albumCovers/album4.jpeg",
-//         albYear: 2013,
-//       },
-//       {
-//         albName: "The North Borders",
-//         albCover: "../assets/artist/images/albumCovers/album5.jpeg",
-//         albYear: 2013,
-//       },
-//       {
-//         albName: "Black Sands Remixed",
-//         albCover: "../assets/artist/images/albumCovers/album6.jpeg",
-//         albYear: 2012,
-//       },
-//       {
-//         albName: "Black Sands",
-//         albCover: "../assets/artist/images/albumCovers/album7.jpeg",
-//         albYear: 2010,
-//       },
-//       {
-//         albName: "Days To Come",
-//         albCover: "../assets/artist/images/albumCovers/album8.jpeg",
-//         albYear: 2006,
-//       },
-//       {
-//         albName: "Dial 'M' for Monkey",
-//         albCover: "../assets/artist/images/albumCovers/album9.jpeg",
-//         albYear: 2003,
-//       },
-//       {
-//         albName: "One Offs (Remixes $ B Sides)",
-//         albCover: "../assets/artist/images/albumCovers/album10.jpeg",
-//         albYear: 2002,
-//       },
-//       {
-//         albName: "Animal Magic",
-//         albCover: "../assets/artist/images/albumCovers/album11.jpeg",
-//         albYear: 2000,
-//       },
-//     ],
-//   },
-// ];
+import {
+  initMusicPlayer,
+  playTrack,
+  pauseTrack,
+  playerSongCard,
+  secsToMins,
+  activeNavLink,
+} from "../assets/common/js/player.js";
 
 /*
 ##############################
 Global Selectors
 ##############################
 */
-const mainSection = document.querySelector("main");
+// Main nav
 const mainNav = document.querySelector(".main-nav");
+const mainNavLinks = document.querySelectorAll(".main-nav a");
+
+// Main section
+const mainSection = document.querySelector("main");
 const heroContent = document.querySelector("main .hero-content");
+
+// Albums section
 const albumsGrid = document.querySelector("#albums > .albums-cards");
+
+// Top tracks section
 const topTracksGrid = document.querySelector("#top-tracks > .top-tracks-cards");
 
+// Player section
+const playerPlayBtn = document.getElementById("player-play-btn");
+const playerPauseBtn = document.getElementById("player-pause-btn");
+const playerPreviousBtn = document.getElementById("previous-track-btn");
+const playerNextBtn = document.getElementById("next-track-btn");
+const volumeInput = document.getElementById("volume-input");
+
 window.onload = () => {
+  // Add ev listener to main nav links
+  for (const link of mainNavLinks) {
+    link.addEventListener("click", activeNavLink);
+  }
+
   // Fetch artist data
   fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/2108", {
     method: "GET",
@@ -118,6 +83,41 @@ window.onload = () => {
       populateTopTracks(fetchedTracks.data);
     })
     .catch((error) => console.log(error));
+
+  // Volume Input range
+  volumeInput.addEventListener("change", (e) => {
+    console.log("changed");
+    volumeInput.style.setProperty("--value", volumeInput.value);
+    volumeInput.style.setProperty(
+      "--min",
+      volumeInput.min === "" ? "0" : volumeInput.min
+    );
+    volumeInput.style.setProperty(
+      "--max",
+      volumeInput.max === "" ? "100" : volumeInput.max
+    );
+    volumeInput.style.setProperty("--value", volumeInput.value);
+  });
+
+  // Add event listener to player control buttons
+  playerPlayBtn.addEventListener("click", () => {
+    playTrack(playerSongCard(topTracksGrid));
+  });
+  playerPauseBtn.addEventListener("click", pauseTrack);
+  playerPreviousBtn.addEventListener("click", () => {
+    const previousCard =
+      playerSongCard(
+        topTracksGrid
+      ).parentElement.previousElementSibling.querySelector(".card");
+    playTrack(previousCard);
+  });
+  playerNextBtn.addEventListener("click", () => {
+    const nextCard =
+      playerSongCard(
+        topTracksGrid
+      ).parentElement.nextElementSibling.querySelector(".card");
+    playTrack(nextCard);
+  });
 };
 
 const populateHeroContent = (artistData) => {
@@ -125,14 +125,37 @@ const populateHeroContent = (artistData) => {
     <p class="listeners fw-bold m-0">${artistData.nb_fan.toLocaleString()}</p>
     <h1 class="artist-name my-5">${artistData.name}</h1>
     <div class="d-flex align-items-center header-btns">
-        <button type="button" class="btn rounded-pill">PLAY</button>
+        <button type="button" class="btn rounded-pill hero-play-btn">PLAY</button>
         <button
             type="button"
-            class="btn btn-outline-secondary rounded-pill"
+            class="btn btn-outline-secondary rounded-pill hero-follow-btn"
         >FOLLOW</button>
         <i class="fas fa-ellipsis-h"></i>
     </div>
   `;
+
+  // Add ev listener to hero play btn
+  heroContent.querySelector(".hero-play-btn").addEventListener("click", () => {
+    playTrack(playerSongCard(topTracksGrid));
+  });
+
+  // Add ev listener to hero follow btn
+  heroContent
+    .querySelector(".hero-follow-btn")
+    .addEventListener("click", (event) => {
+      const heroFollowBtn = event.currentTarget;
+      heroFollowBtn.classList.toggle("followed");
+      if (heroFollowBtn.classList.contains("followed")) {
+        heroFollowBtn.innerText = "FOLLOWED";
+      } else {
+        heroFollowBtn.innerText = "FOLLOW";
+      }
+    });
+
+  // Populate About section listeners
+  document.getElementById("about-listeners").innerText = `${
+    document.querySelector(".listeners").innerText
+  } monthly listeners`;
 };
 
 const populateAlbums = (albumsData) => {
@@ -189,7 +212,7 @@ const populateTopTracks = (tracksData) => {
                   </svg>
                   
                 </button>
-                <button class="btn rounded-circle card-pause-btn d-none">
+                <button class="btn rounded-circle card-pause-btn">
                   <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="5" y="3" width="4" height="18" fill="currentColor"></rect>
                     <rect x="15" y="3" width="4" height="18" fill="currentColor"></rect>
@@ -207,62 +230,17 @@ const populateTopTracks = (tracksData) => {
     if (counter === 12) break;
   }
   topTracksGrid.querySelectorAll(".card-play-btn").forEach((button) => {
-    button.addEventListener("click", playTrack);
+    button.addEventListener("click", () => {
+      const closestCard = button.closest(".card");
+      playTrack(closestCard);
+    });
   });
   topTracksGrid.querySelectorAll(".card-pause-btn").forEach((button) => {
     button.addEventListener("click", pauseTrack);
   });
+
+  initMusicPlayer(topTracksGrid);
 };
-
-const playTrack = (e) => {
-  // Card containing the clicked button
-  const closestCard = e.currentTarget.closest(".card");
-  // Audio element associated with the clicked button
-  const audioEl = closestCard.querySelector("audio");
-
-  // Pause any others playing
-  topTracksGrid.querySelectorAll(".card").forEach((card) => {
-    // Looping through all track cards on the page
-    if (!card.querySelector("audio").paused) {
-      // If audio on current card is not paused (it means it's playing)
-      card.querySelector("audio").pause(); // Pause audio
-      card.querySelector(".card-play-btn").classList.remove("d-none"); // Show play button
-      card.querySelector(".card-pause-btn").classList.add("d-none"); // Hide pause button
-    }
-  });
-
-  // Start playing audio
-  audioEl.play();
-
-  // Hide play button
-  closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
-  // Show pause button
-  closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
-};
-
-const pauseTrack = (e) => {
-  const closestCard = e.currentTarget.closest(".card");
-  const audioEl = closestCard.querySelector("audio");
-
-  audioEl.pause();
-
-  closestCard.querySelector(".card-play-btn").classList.toggle("d-none");
-  closestCard.querySelector(".card-pause-btn").classList.toggle("d-none");
-};
-
-// Change active link on main nav
-const mainNavLinks = document.querySelectorAll(".main-nav a");
-const activeNavLink = (e) => {
-  // Remove class from previous active
-  const previousActive = document.querySelector(".main-nav a.active");
-  previousActive.classList.remove("active");
-
-  // Add class to new active
-  e.currentTarget.classList.add("active");
-};
-for (const link of mainNavLinks) {
-  link.addEventListener("click", activeNavLink);
-}
 
 // Set bg color for main nav upon scroll
 mainSection.addEventListener("scroll", () => {
@@ -274,31 +252,3 @@ mainSection.addEventListener("scroll", () => {
     mainNav.classList.remove("bg-on");
   }
 });
-
-// Music Player
-// let audioElement = document.getElementById("audio-OneRepublic-Run");
-// let btnPlayPause = document.getElementById("btn-play");
-// let getIcon = document.getElementById("getIcon");
-// btnPlayPause.addEventListener("click", function () {
-//   if (audioElement.paused && getIcon.classList.contains("fa-play-circle")) {
-//     audioElement.play();
-//     getIcon.classList.remove("far", "fa-play-circle");
-//     getIcon.classList.add("far", "fa-pause-circle");
-//   } else {
-//     audioElement.pause();
-//     getIcon.classList.remove("far", "fa-pause-circle");
-//     getIcon.classList.add("far", "fa-play-circle");
-//   }
-// });
-
-/*
-##########################
-HELPER FUNCTIONS
-##########################
-*/
-const secsToMins = (seconds) => {
-  const intMins = Math.floor(seconds / 60);
-  const remainingSecs = seconds % 60;
-
-  return `${intMins}m ${("0" + remainingSecs).slice(-2)}s`;
-};
