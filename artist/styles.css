@@ -74,26 +74,36 @@ header {
 /* Main navbar */
 .main-nav {
   position: absolute;
-  width: calc(100vw - 250px);
+  width: 100%;
   top: 340px;
   left: 0px;
   z-index: 2;
   transition: background-color 0.7s;
 }
-.main-nav .show,
-.main-nav .collapsing {
-  background-color: rgba(0, 0, 0, 0.8);
+.main-nav.bg-on {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+@media screen and (min-width: 576px) {
+  .main-nav {
+    width: calc(100vw - 250px);
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .main-nav .nav-show {
+    display: none;
+  }
+  .main-nav.bg-on {
+    left: 250px;
+  }
 }
 .main-nav .show a,
 .main-nav .collapsing a {
   padding-left: 15px;
 }
-.main-nav.bg-on {
-  position: fixed;
-  top: 0;
-  left: 250px;
-  background-color: rgba(0, 0, 0, 0.7);
-}
+
 .main-nav .navbar-toggler {
   padding: 0;
   outline: none;
@@ -114,7 +124,7 @@ header {
   color: white;
   position: relative;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .main-nav a.active::after {
     content: "";
     height: 2px;
