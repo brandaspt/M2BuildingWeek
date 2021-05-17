@@ -131,7 +131,16 @@ const playerPreviousBtn = document.getElementById("previous-track-btn");
 const playerNextBtn = document.getElementById("next-track-btn");
 const volumeInput = document.getElementById("volume-input");
 
+// Links
+const artistLink = document.getElementById("artist-link");
+const loginLink = document.getElementById("login-link");
+
 window.onload = () => {
+  // Set full urls to links
+  // if (window.location.host[0].match(/[a-z]/)) {
+  //   artistLink.href = `${window.location.href}artist/index.html`;
+  //   loginLink.href = `${window.location.href}login/index.html`;
+  // }
   // Add ev listener to main nav links
   for (const link of mainNavLinks) {
     link.addEventListener("click", activeNavLink);

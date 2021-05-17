@@ -21,10 +21,6 @@ Start of home page
   .main-nav {
     width: calc(100vw - 250px);
     left: 250px;
-    background-color: rgba(0, 0, 0, 0);
-  }
-  .main-nav.bg-on {
-    background-color: rgba(0, 0, 0, 0.7);
   }
   .main-nav .nav-show {
     display: none;
@@ -37,11 +33,10 @@ Start of home page
   padding: 0;
   outline: none;
   box-shadow: none;
-}
-.main-nav .navbar-toggler svg {
+  background-color: rgba(0, 0, 0, 0.7);
   color: #999999;
-  background-color: #99999934;
 }
+
 .main-nav a {
   color: #999999;
 }
@@ -63,6 +58,9 @@ Start of home page
     transform: translateX(-50%);
     bottom: 0px;
     border: 1px solid rgb(116, 173, 29);
+  }
+  .main-nav {
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 /* Throwback section */
